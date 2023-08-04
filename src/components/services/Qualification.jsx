@@ -1,10 +1,10 @@
 import React from "react";
 import "./qualification.css";
 import { BiBuildings } from "react-icons/bi";
-import {GoLocation} from "react-icons/go"
-import {TbBuildingBank} from "react-icons/tb"
-import {AiTwotoneCalendar} from "react-icons/ai"
-import {BsCheck} from "react-icons/bs"
+import { GoLocation } from "react-icons/go";
+import { TbBuildingBank } from "react-icons/tb";
+import { AiTwotoneCalendar } from "react-icons/ai";
+import { BsCheck } from "react-icons/bs";
 
 const Qualification = () => {
   return (
@@ -27,7 +27,10 @@ const Qualification = () => {
             </li>
             <li>
               <TbBuildingBank className="service__list-icon" />
-              <p>Maharashtra State Board Of Secondary and Higher Secondary Education, Nashik</p>
+              <p>
+                Maharashtra State Board Of Secondary and Higher Secondary
+                Education, Nashik
+              </p>
             </li>
             <li>
               <AiTwotoneCalendar className="service__list-icon" />
@@ -64,7 +67,6 @@ const Qualification = () => {
               <BsCheck className="service__list-icon" />
               <p>Completed With 72%</p>
             </li>
-          
           </ul>
         </article>
         <article className="service">
@@ -86,11 +88,11 @@ const Qualification = () => {
             </li>
             <li>
               <AiTwotoneCalendar className="service__list-icon" />
-              <p>September 2024</p>
+              <p>September 2023</p>
             </li>
             <li>
               <BsCheck className="service__list-icon" />
-              <p>Current CGPA 8.41</p>
+              <p>Completed With CGPA 8.50</p>
             </li>
           </ul>
         </article>
