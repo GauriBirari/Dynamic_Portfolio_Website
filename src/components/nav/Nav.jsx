@@ -1,7 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import "./nav.css";
-import { BiHome, BiUser, BiBook, BiMessageSquareDetail } from "react-icons/bi";
+import {
+  BiHome,
+  BiUser,
+  BiBook,
+  BiMessageSquareDetail,
+  BiCertification,
+} from "react-icons/bi";
 import { RiServiceLine } from "react-icons/ri";
 
 const Nav = () => {
@@ -36,6 +42,13 @@ const Nav = () => {
         className={activeNav === "#services" ? "active" : ""}
       >
         <RiServiceLine />
+      </a>
+      <a
+        href="#certifications"
+        onClick={() => setActiveNav("#certifications")}
+        className={activeNav === "#certifications" ? "active" : ""}
+      >
+        <BiCertification />
       </a>
       <a
         href="#contact"

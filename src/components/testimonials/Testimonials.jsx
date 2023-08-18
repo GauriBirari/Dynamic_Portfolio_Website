@@ -36,7 +36,7 @@ const data = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials">
+    <section id="certifications">
       <h2>Certificates</h2>
       <Swiper
         className="container testimonials__container"

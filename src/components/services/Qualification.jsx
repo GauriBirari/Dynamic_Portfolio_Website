@@ -14,36 +14,6 @@ const Qualification = () => {
       <div className="container services__container">
         <article className="service">
           <div className="service__head">
-            <h3>SSC</h3>
-          </div>
-          <ul className="service__list">
-            <li>
-              <BiBuildings className="service__list-icon" />
-              <p>Vasant Dada Patil Highschool</p>
-            </li>
-            <li>
-              <GoLocation className="service__list-icon" />
-              <p>Madsangvi, Aurangabad Road, Nashik 422003</p>
-            </li>
-            <li>
-              <TbBuildingBank className="service__list-icon" />
-              <p>
-                Maharashtra State Board Of Secondary and Higher Secondary
-                Education, Nashik
-              </p>
-            </li>
-            <li>
-              <AiTwotoneCalendar className="service__list-icon" />
-              <p>March 2018</p>
-            </li>
-            <li>
-              <BsCheck className="service__list-icon" />
-              <p>Completed With 85.20%</p>
-            </li>
-          </ul>
-        </article>
-        <article className="service">
-          <div className="service__head">
             <h3>HSC</h3>
           </div>
           <ul className="service__list">
@@ -93,6 +63,34 @@ const Qualification = () => {
             <li>
               <BsCheck className="service__list-icon" />
               <p>Completed With CGPA 8.50</p>
+            </li>
+          </ul>
+        </article>
+
+        <article className="service">
+          <div className="service__head">
+            <h3>MBA (IT)</h3>
+          </div>
+          <ul className="service__list">
+            <li>
+              <BiBuildings className="service__list-icon" />
+              <p>Institute of Management Research & Technology [I.M.R.T.]</p>
+            </li>
+            <li>
+              <GoLocation className="service__list-icon" />
+              <p>Gangapur Road, Nashik - 422002</p>
+            </li>
+            <li>
+              <TbBuildingBank className="service__list-icon" />
+              <p>University of Pune</p>
+            </li>
+            <li>
+              <AiTwotoneCalendar className="service__list-icon" />
+              <p>August 2025</p>
+            </li>
+            <li>
+              <BsCheck className="service__list-icon" />
+              <p>Appearing</p>
             </li>
           </ul>
         </article>
