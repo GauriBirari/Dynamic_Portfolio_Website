@@ -10,6 +10,8 @@ import IMG7 from "../../assets/p6.png";
 import IMG8 from "../../assets/p.png";
 import IMG9 from "../../assets/goda.png";
 import IMG10 from "../../assets/yuva.png";
+import IMG11 from "../../assets/garden.png";
+
 import { BiCodeAlt } from "react-icons/bi";
 
 const data = [
@@ -24,7 +26,7 @@ const data = [
     languages: "React Js, Bootstrap, Node Js, Mysql",
   },
   {
-    id: 1,
+    id: 2,
     image: IMG9,
     title: "Nashik Municiple Corporation Godavari Sanvardhan Website",
     description:
@@ -34,7 +36,17 @@ const data = [
     languages: "React Js, Bootstrap, Node Js, MongoDb",
   },
   {
-    id: 1,
+    id: 3,
+    image: IMG11,
+    title: "Nashik Municiple Corporation Garden Website",
+    description:
+      "This is Nashik Municiple Corporation Garden Website build using React Js, Springboot, Postgress Sql. I was working for user interface design and integrating the Api's for this website",
+    github: "https://github.com",
+    demo: "https://garden.nmc.gov.in/#/",
+    languages: "React Js, Bootstrap, Node Js, Springbood",
+  },
+  {
+    id: 4,
     image: IMG1,
     title: "Venkateshwara Co-operative Power & Agro Processing Ltd.",
     description:
@@ -44,7 +56,7 @@ const data = [
     languages: "React Js, Bootstrap",
   },
   {
-    id: 2,
+    id: 5,
     image: IMG2,
     title: "The Innovative Solutions",
     description:
@@ -54,7 +66,7 @@ const data = [
     languages: "React Js, Bootstrap",
   },
   {
-    id: 3,
+    id: 6,
     image: IMG3,
     title: "Green County India",
     description: "This is Ecommerce Website Including some Products.",
@@ -63,7 +75,16 @@ const data = [
     languages: "React Js, Bootstrap",
   },
   {
-    id: 4,
+    id: 7,
+    image: IMG6,
+    title: "NULM",
+    description: "",
+    github: "https://github.com",
+    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
+    languages: "React Js, Bootstrap",
+  },
+  {
+    id: 8,
     image: IMG4,
     title: "TextUtils",
     description:
@@ -73,7 +94,7 @@ const data = [
     languages: "React Js, Bootstrap",
   },
   {
-    id: 5,
+    id: 9,
     image: IMG5,
     title: "Sahajyoga Website",
     description: "",
@@ -81,17 +102,9 @@ const data = [
     demo: "https://vishwanirmalabalshakti.org/",
     languages: "React Js, Bootstrap",
   },
+
   {
-    id: 6,
-    image: IMG6,
-    title: "NULM",
-    description: "",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
-    languages: "React Js, Bootstrap",
-  },
-  {
-    id: 6,
+    id: 10,
     image: IMG7,
     title: "TinDog",
     description: "",
@@ -100,7 +113,7 @@ const data = [
     languages: "HTML, CSS, Bootstrap",
   },
   {
-    id: 7,
+    id: 11,
     image: IMG8,
     title: "News App",
     description:
