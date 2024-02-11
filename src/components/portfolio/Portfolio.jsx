@@ -83,8 +83,18 @@ const data = [
     demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
     languages: "React Js, Bootstrap",
   },
+
   {
     id: 8,
+    image: IMG5,
+    title: "Sahajyoga Website",
+    description: "",
+    github: "https://github.com",
+    demo: "https://vishwanirmalabalshakti.org/",
+    languages: "React Js, Bootstrap",
+  },
+  {
+    id: 9,
     image: IMG4,
     title: "TextUtils",
     description:
@@ -93,16 +103,6 @@ const data = [
     demo: "https://dribbble.com/shots/1695582-Maintaining-tasks-and-tracking-progress",
     languages: "React Js, Bootstrap",
   },
-  {
-    id: 9,
-    image: IMG5,
-    title: "Sahajyoga Website",
-    description: "",
-    github: "https://github.com",
-    demo: "https://vishwanirmalabalshakti.org/",
-    languages: "React Js, Bootstrap",
-  },
-
   {
     id: 10,
     image: IMG7,
