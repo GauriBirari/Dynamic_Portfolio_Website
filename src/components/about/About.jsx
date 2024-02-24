@@ -1,6 +1,6 @@
 import React from "react";
 import "./about.css";
-import ME from "../../assets/g.png";
+import ME from "../../assets/gau (2).jpg";
 import { FaTags, FaUsers, FaFolderOpen } from "react-icons/fa";
 import { BiCodeAlt } from "react-icons/bi";
 
@@ -12,7 +12,7 @@ const About = () => {
       <div className="container about__container">
         <div className="about__me">
           <div className="about__me-image">
-            <img src={ME} alt="me" />
+            <img src={ME} alt="me" className="img-fluid" />
           </div>
         </div>
         <div className="about__content">
