@@ -8,21 +8,29 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Testimonials from "./components/testimonials/Testimonials";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+import NavBar from "./pages/navbar/Navbar";
+import Home from "./pages/home/Home";
+import { Banner } from "./pages/banner/Banner";
+import { Skills } from "./pages/skills/Skills";
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <Nav />
+    <div className="App">
+      {/* <Header /> */}
+      <NavBar />
+      <Banner />
+      <Skills />
+      {/* <Home /> */}
+      {/* <Nav />
       <About />
       <Experience />
       <Qualification />
       <Testimonials />
       <Portfolio />
       {/* <Testimonials /> */}
-      <Contact />
-      <Footer />
-    </>
+      {/* <Contact />
+      <Footer /> */}
+    </div>
   );
 };
 
