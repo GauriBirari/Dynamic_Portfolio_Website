@@ -6,7 +6,7 @@ import IMG3 from "../../assets/p2.png";
 import IMG4 from "../../assets/p3.png";
 import IMG5 from "../../assets/p4.png";
 import IMG6 from "../../assets/p5.png";
-import IMG7 from "../../assets/p6.png";
+import IMG7 from "../../assets/va.png";
 import IMG8 from "../../assets/p.png";
 import IMG9 from "../../assets/goda.png";
 import IMG10 from "../../assets/yuva.png";
@@ -16,7 +16,27 @@ import { BiCodeAlt } from "react-icons/bi";
 
 const data = [
   {
+    id: 10,
+    image: IMG7,
+    title:
+      "Venkateshwara Co-operative Power & Agro Processing Ltd. Admin Panel.",
+    description: "",
+    github: "https://github.com",
+    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
+    languages: "HTML, CSS, Bootstrap, React Js, Node Js, MySql",
+  },
+  {
     id: 1,
+    image: IMG1,
+    title: "Venkateshwara Co-operative Power & Agro Processing Ltd.",
+    description:
+      "Venkateshwara Co-operative Power & Agro Processing Ltd. is informative website build using React Js.",
+    github: "https://github.com",
+    demo: "https://www.venkateshwarapoweragro.com/",
+    languages: "React Js, Bootstrap",
+  },
+  {
+    id: 2,
     image: IMG10,
     title: "Yuvasarathi Website",
     description:
@@ -26,7 +46,7 @@ const data = [
     languages: "React Js, Bootstrap, Node Js, Mysql",
   },
   {
-    id: 2,
+    id: 3,
     image: IMG9,
     title: "Nashik Municiple Corporation Godavari Sanvardhan Website",
     description:
@@ -36,25 +56,16 @@ const data = [
     languages: "React Js, Bootstrap, Node Js, MongoDb",
   },
   {
-    id: 3,
+    id: 4,
     image: IMG11,
     title: "Nashik Municiple Corporation Garden Website",
     description:
       "This is Nashik Municiple Corporation Garden Website build using React Js, Springboot, Postgress Sql. I was working for user interface design and integrating the Api's for this website",
     github: "https://github.com",
     demo: "https://garden.nmc.gov.in/#/",
-    languages: "React Js, Bootstrap, Node Js, Springbood",
+    languages: "React Js, Bootstrap, Node Js, MySql",
   },
-  {
-    id: 4,
-    image: IMG1,
-    title: "Venkateshwara Co-operative Power & Agro Processing Ltd.",
-    description:
-      "Venkateshwara Co-operative Power & Agro Processing Ltd. is informative website build using React Js.",
-    github: "https://github.com",
-    demo: "https://www.venkateshwarapoweragro.com/",
-    languages: "React Js, Bootstrap",
-  },
+
   {
     id: 5,
     image: IMG2,
@@ -103,15 +114,7 @@ const data = [
     demo: "https://dribbble.com/shots/1695582-Maintaining-tasks-and-tracking-progress",
     languages: "React Js, Bootstrap",
   },
-  {
-    id: 10,
-    image: IMG7,
-    title: "TinDog",
-    description: "",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
-    languages: "HTML, CSS, Bootstrap",
-  },
+
   {
     id: 11,
     image: IMG8,

@@ -1,7 +1,7 @@
 import React from "react";
 import "./about.css";
 import ME from "../../assets/gau (2).jpg";
-import { FaTags, FaUsers, FaFolderOpen } from "react-icons/fa";
+import { FaTags, FaUsers, FaFolderOpen, FaAndroid } from "react-icons/fa";
 import { BiCodeAlt } from "react-icons/bi";
 
 const About = () => {
@@ -24,9 +24,9 @@ const About = () => {
             </article>
 
             <article className="about__card">
-              <FaFolderOpen className="about__icon" />
-              <h5>Graphics Desighner</h5>
-              <small>Canva</small>
+              <FaAndroid className="about__icon" />
+              <h5>Application Developer</h5>
+              <small>React Native</small>
             </article>
             <article className="about__card">
               <FaFolderOpen className="about__icon" />
