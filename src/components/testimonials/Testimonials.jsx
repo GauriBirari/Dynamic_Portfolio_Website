@@ -5,6 +5,8 @@ import AVTR2 from "../../assets/c1.png";
 import AVTR3 from "../../assets/c2.png";
 import AVTR4 from "../../assets/c3.png";
 import AVTR5 from "../../assets/c4.png";
+import AVTR6 from "../../assets/postmancertificate.png";
+import AVTR7 from "../../assets/bighost.png";
 
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,7 +15,21 @@ import "swiper/css/pagination";
 
 const data = [
   {
+    id: 7,
+    avatar: AVTR7,
+    name: "Shata Wale",
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quidem nobis omnis beatae incidunt quibusdam laudantium accusamus quasi, aut reiciendis eum dolore eaque optio nemo.  non.",
+  },
+  {
     id: 1,
+    avatar: AVTR6,
+    name: "Shata Wale",
+    review:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quidem nobis omnis beatae incidunt quibusdam laudantium accusamus quasi, aut reiciendis eum dolore eaque optio nemo.  non.",
+  },
+  {
+    id: 6,
     avatar: AVTR2,
     name: "Shata Wale",
     review:

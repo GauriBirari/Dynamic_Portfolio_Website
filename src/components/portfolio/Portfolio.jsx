@@ -11,10 +11,52 @@ import IMG8 from "../../assets/p.png";
 import IMG9 from "../../assets/goda.png";
 import IMG10 from "../../assets/yuva.png";
 import IMG11 from "../../assets/garden.png";
+import IMG12 from "../../assets/amc.png";
+import IMG13 from "../../assets/competition.png";
+import IMG14 from "../../assets/digimart.png";
+import IMG15 from "../../assets/venkatapp.png";
 
 import { BiCodeAlt } from "react-icons/bi";
 
 const data = [
+  {
+    id: 15,
+    image: IMG15,
+    title: "Venkateshwara Krishak App (With Admin Panel)",
+    description: "",
+    github: "https://github.com",
+    demo: "",
+    languages: "React Native, Node Js, Mysql",
+  },
+  {
+    id: 14,
+    image: IMG14,
+    title: "Digimart Ecommerce Website (With Admin Panel)",
+    description: "",
+    github: "https://github.com",
+    demo: "http://competition.godavari.nmc.gov.in/",
+    languages: "HTML, CSS, Bootstrap, React Js, Material UI, Node Js, MongoDB",
+  },
+  {
+    id: 13,
+    image: IMG13,
+    title:
+      "Nashik Municiple Corporation Godavari Sanvardhan River Front Development Competition Website (With Admin Panel)",
+    description: "",
+    github: "https://github.com",
+    demo: "http://competition.godavari.nmc.gov.in/",
+    languages: "HTML, CSS, Bootstrap, React Js, Material UI, Node Js, MySql",
+  },
+  {
+    id: 12,
+    image: IMG12,
+    title:
+      "Ahamadnagar Municipal Corporation's Festival Permission Management Portal (With Admin Panel)",
+    description: "",
+    github: "https://github.com",
+    demo: "https://amcfest.in/",
+    languages: "HTML, CSS, Bootstrap, React Js, Material UI, Node Js, MySql",
+  },
   {
     id: 10,
     image: IMG7,
@@ -22,8 +64,8 @@ const data = [
       "Venkateshwara Co-operative Power & Agro Processing Ltd. Admin Panel.",
     description: "",
     github: "https://github.com",
-    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
-    languages: "HTML, CSS, Bootstrap, React Js, Node Js, MySql",
+    demo: "https://www.venkateshwarapoweragro.com/#/super-admin",
+    languages: "HTML, CSS, Bootstrap, React Js, Material UI, Node Js, MySql",
   },
   {
     id: 1,
@@ -33,12 +75,12 @@ const data = [
       "Venkateshwara Co-operative Power & Agro Processing Ltd. is informative website build using React Js.",
     github: "https://github.com",
     demo: "https://www.venkateshwarapoweragro.com/",
-    languages: "React Js, Bootstrap",
+    languages: "React Js,Material UI, Bootstrap, Node Js, Mysql",
   },
   {
     id: 2,
     image: IMG10,
-    title: "Yuvasarathi Website",
+    title: "Yuvasarathi Website (With Admin Panel)",
     description:
       "This is student and industry engagement platform where students can apply for jobs, internships etc. build using React js, Node js and Mysql",
     github: "https://github.com",
@@ -48,7 +90,8 @@ const data = [
   {
     id: 3,
     image: IMG9,
-    title: "Nashik Municiple Corporation Godavari Sanvardhan Website",
+    title:
+      "Nashik Municiple Corporation Godavari Sanvardhan Website (With Admin Panel)",
     description:
       "This is Nashik Municiple Corporation Godavari Sanvardhan Website build using mern stack.",
     github: "https://github.com",
@@ -58,7 +101,7 @@ const data = [
   {
     id: 4,
     image: IMG11,
-    title: "Nashik Municiple Corporation Garden Website",
+    title: "Nashik Municiple Corporation Garden Website (With Admin Panel)",
     description:
       "This is Nashik Municiple Corporation Garden Website build using React Js, Springboot, Postgress Sql. I was working for user interface design and integrating the Api's for this website",
     github: "https://github.com",
@@ -85,15 +128,15 @@ const data = [
     demo: "https://dribbble.com/shots/17290917-Eclipse-Figma-dashboard-UI-kit-for-data-design-web-apps",
     languages: "React Js, Bootstrap",
   },
-  {
-    id: 7,
-    image: IMG6,
-    title: "NULM",
-    description: "",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
-    languages: "React Js, Bootstrap",
-  },
+  // {
+  //   id: 7,
+  //   image: IMG6,
+  //   title: "NULM",
+  //   description: "",
+  //   github: "https://github.com",
+  //   demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
+  //   languages: "React Js, Bootstrap",
+  // },
 
   {
     id: 8,
@@ -149,9 +192,9 @@ const Portfolio = () => {
                   <BiCodeAlt className="mt-1" /> {languages}
                 </p>
                 <div className="portfolio__item-cta">
-                  <a href={github} className="btn">
+                  {/* <a href={github} className="btn">
                     Github
-                  </a>
+                  </a> */}
                   <a
                     href={demo}
                     className="btn btn-primary"
