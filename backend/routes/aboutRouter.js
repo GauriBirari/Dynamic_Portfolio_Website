@@ -21,4 +21,15 @@ router.get("/getallabout", async (req, res) => {
   }
 });
 
+
+router.delete("/deleteabout/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const deleteabout = await About.findByIdAndDelete(id)
+    res.status(200).json(deleteabout)
+  } catch (error) {
+    console.log(error);
+  }
+})
+
 module.exports = router;

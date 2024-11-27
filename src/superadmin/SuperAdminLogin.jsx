@@ -99,7 +99,7 @@ function SuperAdminLogin() {
                     height="100"
                     src="/logo.png"
                   /> */}
-                  <h3 className="mb-3 text-center ">DigiMart Admin Login</h3>
+                  <h3 className="mb-3 text-center "> Admin Login</h3>
                   <form onSubmit={handleSubmit}>
                     <div className="mb-2">
                       <TextField

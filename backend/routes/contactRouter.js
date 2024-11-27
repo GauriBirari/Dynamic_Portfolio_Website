@@ -72,4 +72,14 @@ router.get("/getallcontacts", async (req, res) => {
   }
 });
 
+router.delete("/deletecontact/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const deletecontact = await Contact.findByIdAndDelete(id)
+    res.status(200).json(deletecontact)
+  } catch (error) {
+    console.log(error);
+  }
+
+})
 module.exports = router;

@@ -31,4 +31,14 @@ router.get("/getallprojects", saveProjectImage, async (req, res) => {
   }
 });
 
+router.delete("/deleteproject/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    const deleteproject = await Project.findByIdAndDelete(id)
+    res.status(200).json(deleteproject)
+  } catch (error) {
+    console.log(error);
+  }
+})
+
 module.exports = router;

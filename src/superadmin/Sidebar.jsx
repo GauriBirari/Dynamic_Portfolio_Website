@@ -63,14 +63,14 @@ const Sidebar = () => {
             }}
             items={[
               {
-                key: "addproducts",
+                key: "addprojects",
                 icon: <FaProductHunt className="fs-4" />,
-                label: "Add Products",
+                label: "Add Projects",
               },
               {
-                key: "addslider",
+                key: "addabout",
                 icon: <TfiLayoutSlider className="fs-4" />,
-                label: "Add Slider",
+                label: "Add About Details",
               },
               {
                 key: "contactentries",

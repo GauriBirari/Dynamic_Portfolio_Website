@@ -20,8 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useSelectAccess } from "../store/stateFunctions";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 const initialValues = {
   title: "",
@@ -109,10 +109,10 @@ const AddProjects = ({ role }) => {
       .then(function (swalObject) {
         if (swalObject.isConfirmed) {
           server
-            .delete(`/project/deleteproject/${data._id}`, {
+            .delete(`/product/deleteproducts/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
-                // Authorization: user.authToken,
+                Authorization: user.authToken,
               },
             })
             .then(function (response) {
@@ -199,7 +199,7 @@ const AddProjects = ({ role }) => {
           .post("/project/addproject", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
-              // Authorization: user.authToken,
+              Authorization: user.authToken,
             },
           })
           .then(function (response) {
@@ -224,17 +224,20 @@ const AddProjects = ({ role }) => {
   return (
     <>
       {console.log(formik.values.errors)}
-      <div className="">
+      <div
+        className="container"
+        style={{ overflow: "scroll", height: "470px" }}
+      >
         <div className="d-flex position-relative mb-3 justify-content-center ">
-          <h5 className="m-auto text-center">Previous Projects</h5>
+          <h5 className="m-auto text-center">Previous Products</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
-            Add Projects
+            Add Products
           </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
-                {isEditMode ? "Edit Project Details" : "Add Project Details"}
+                {isEditMode ? "Edit Products Details" : "Add Products Details"}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -273,30 +276,40 @@ const AddProjects = ({ role }) => {
                     <p className="text-danger">{formik.errors.languages}</p>
                   ) : null}
                 </div>
-                <div className="form-outline mb-2">
-                  <TextField
-                    name="link"
-                    margin="dense"
-                    type="text"
-                    placeholder="Link"
-                    variant="outlined"
-                    label="Link"
-                    value={formik.values.link}
-                    onChange={formik.handleChange}
-                    fullWidth
-                    required
-                  ></TextField>
-                  {formik.errors.link ? (
-                    <p className="text-danger">{formik.errors.link}</p>
-                  ) : null}
+
+                <div className="mb-2">
+                  <FormControl fullWidth required className="mt-2">
+                    <InputLabel id="demo-simple-select-label">
+                      Category
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      label="Category"
+                      variant="outlined"
+                      name="type"
+                      value={formik.values.type}
+                      onChange={formik.handleChange}
+                      required
+                    >
+                      {/* <MenuItem value="city">City </MenuItem> */}
+                      <MenuItem value="frontend">Frontend</MenuItem>
+                      <MenuItem value="backend">Backend</MenuItem>
+                      <MenuItem value="other">Other</MenuItem>
+                    </Select>
+                    {formik.errors.type ? (
+                      <p className="text-danger mb-0">{formik.errors.type}</p>
+                    ) : null}
+                  </FormControl>
                 </div>
+
                 <div className="form-outline mb-2">
                   <TextField
                     name="image"
                     margin="dense"
                     type="file"
                     variant="outlined"
-                    label=" Images"
+                    label="Products Images"
                     fullWidth
                     InputProps={{
                       startAdornment: (
@@ -319,7 +332,6 @@ const AddProjects = ({ role }) => {
                     <p className="text-danger">{formik.errors.image}</p>
                   ) : null}
                 </div>
-
                 <div className="pt-1 mb-2 ">
                   <Button variant="contained" type="submit">
                     {isEditMode ? "Update" : "Post"}
@@ -334,9 +346,9 @@ const AddProjects = ({ role }) => {
             <thead>
               <tr>
                 <th scope="col">Sr. No</th>
-                <th scope="col">Project Name</th>
+                <th scope="col">Product Name</th>
                 <th scope="col">languages</th>
-                <th scope="col">link</th>
+                <th scope="col">Category</th>
                 <th scope="col">Images</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
@@ -349,9 +361,8 @@ const AddProjects = ({ role }) => {
                     <th scope="row">{index + 1}</th>
                     <td>{item.title}</td>
                     <td>{item.languages}</td>
-                    <td>
-                      <a href={item.link}>View</a>
-                    </td>
+                    <td>{item.price}</td>
+                    <td>{item.category}</td>
                     <td>
                       <a href={item.image} target="_blank">
                         <img

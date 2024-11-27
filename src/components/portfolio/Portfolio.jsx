@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./portfolio.css";
 import IMG1 from "../../assets/p7.png";
 import IMG2 from "../../assets/p1.png";
@@ -17,6 +17,9 @@ import IMG14 from "../../assets/digimart.png";
 import IMG15 from "../../assets/venkatapp.png";
 
 import { BiCodeAlt } from "react-icons/bi";
+import { AxiosError } from "axios";
+import { server } from "../../common";
+import { toast } from "react-toastify";
 
 const data = [
   {
@@ -162,6 +165,40 @@ const data = [
 ];
 
 const Portfolio = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Get
+  const getData = () => {
+    setLoading(true);
+
+    server
+      .get("/project/getallprojects", {
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": user.authToken,
+        },
+      })
+      .then(function (response) {
+        console.log("api response", response.data);
+        if (response.status === 200 || response.status === 201) {
+          setData(response.data);
+        }
+        setLoading(false);
+      })
+      .catch(function (error) {
+        if (error instanceof AxiosError && error.response?.data?.message)
+          toast.error(error.response.data.message);
+        else if (error.response?.data?.error) {
+          toast.error(error.response.data.error);
+        } else console.log("Failed to connect to server");
+      });
+  };
+
   return (
     <section id="portfolio">
       <h5>My Recent Work</h5>
@@ -170,35 +207,33 @@ const Portfolio = () => {
         className="container 
       portfolio__container"
       >
-        {data.map(
-          ({ id, image, title, github, demo, languages, description }) => {
-            return (
-              <article className="portfolio__item" key={id}>
-                <div className="portfolio__item-image">
-                  <img src={image} alt={title} />
-                </div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <p>
-                  <BiCodeAlt className="mt-1" /> {languages}
-                </p>
-                <div className="portfolio__item-cta">
-                  {/* <a href={github} className="btn">
+        {data.map(({ id, image, title, github, demo, languages, link }) => {
+          return (
+            <article className="portfolio__item" key={id}>
+              <div className="portfolio__item-image">
+                <img src={image} alt={title} />
+              </div>
+              <h3>{title}</h3>
+              <p>{languages}</p>
+              <p>
+                <BiCodeAlt className="mt-1" /> {languages}
+              </p>
+              <div className="portfolio__item-cta">
+                {/* <a href={github} className="btn">
                     Github
                   </a> */}
-                  <a
-                    href={demo}
-                    className="btn btn-primary"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Live Demo
-                  </a>
-                </div>
-              </article>
-            );
-          }
-        )}
+                <a
+                  href={link}
+                  className="btn btn-primary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Live Demo
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

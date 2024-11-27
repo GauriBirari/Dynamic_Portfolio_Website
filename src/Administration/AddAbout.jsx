@@ -20,19 +20,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useSelectAccess } from "../store/stateFunctions";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 
 const initialValues = {
-  title: "",
-  languages: "",
-  link: "",
-  image: null,
+  description: "",
 };
 
 const swalalert = withReactContent(Swal);
 
-const AddProjects = ({ role }) => {
+const AddAbout = ({ role }) => {
   const user = useSelectAccess("Super Admin");
 
   const [show, setShow] = useState(false);
@@ -58,10 +55,7 @@ const AddProjects = ({ role }) => {
     getData();
     if (isEditMode && selectedData) {
       formik.setValues({
-        title: selectedData.title,
-        languages: selectedData.languages,
-        link: selectedData.link,
-        image: selectedData.image,
+        description: selectedData.description,
       });
     }
   }, [isEditMode, selectedData]);
@@ -69,7 +63,7 @@ const AddProjects = ({ role }) => {
   // Get
   const getData = () => {
     server
-      .get("/project/getallprojects", {
+      .get("/about/getallabout", {
         headers: {
           "Content-Type": "application/json",
           // "auth-token": user.authToken,
@@ -109,7 +103,7 @@ const AddProjects = ({ role }) => {
       .then(function (swalObject) {
         if (swalObject.isConfirmed) {
           server
-            .delete(`/project/deleteproject/${data._id}`, {
+            .delete(`/about/deleteabout/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
                 // Authorization: user.authToken,
@@ -142,19 +136,10 @@ const AddProjects = ({ role }) => {
 
   // update
   const handleUpdate = (values) => {
-    const formData = new FormData();
-    formData.append("title", values.title);
-    formData.append("languages", values.languages);
-    formData.append("link", values.link);
-
-    if (values.image) {
-      formData.append("image", values.image);
-    }
-
     server
-      .put(`/product/updateproducts/${values._id}`, formData, {
+      .put(`/product/updateproducts/${values._id}`, values, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
           Authorization: user.authToken,
         },
       })
@@ -176,29 +161,16 @@ const AddProjects = ({ role }) => {
   const formik = useFormik({
     initialValues: isEditMode ? selectedData : initialValues,
     validationSchema: Yup.object({
-      title: Yup.string().required("Enter a Product title"),
-      languages: Yup.string().required("Enter a Product languages"),
-      link: Yup.string().required("Enter a Product type"),
-      image: Yup.mixed().required("Please select an image"),
+      description: Yup.string().required("Enter a Product Description"),
     }),
     onSubmit: (values, action) => {
       if (isEditMode) {
         handleUpdate({ ...values, _id: selectedData._id });
       } else {
-        if (!values.image) {
-          toast.error("Please select a images");
-          return;
-        }
-        const formData = new FormData();
-        formData.append("title", values.title);
-        formData.append("languages", values.languages);
-        formData.append("link", values.link);
-        formData.append("image", values.image);
-
         server
-          .post("/project/addproject", formData, {
+          .post("/about/addabout", values, {
             headers: {
-              "Content-Type": "multipart/form-data",
+              "Content-Type": "application/json",
               // Authorization: user.authToken,
             },
           })
@@ -224,99 +196,39 @@ const AddProjects = ({ role }) => {
   return (
     <>
       {console.log(formik.values.errors)}
-      <div className="">
+      <div
+        className="container"
+        style={{ overflow: "scroll", height: "470px" }}
+      >
         <div className="d-flex position-relative mb-3 justify-content-center ">
-          <h5 className="m-auto text-center">Previous Projects</h5>
+          <h5 className="m-auto text-center">Previous Data</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
-            Add Projects
+            Add Data
           </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
-                {isEditMode ? "Edit Project Details" : "Add Project Details"}
+                {isEditMode ? "Edit Details" : "Add Details"}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form onSubmit={formik.handleSubmit}>
                 <div className="form-outline mb-2">
                   <TextField
-                    name="title"
+                    name="description"
                     margin="dense"
                     type="text"
-                    placeholder="Title"
+                    placeholder="Description"
                     variant="outlined"
-                    label="Title"
-                    value={formik.values.title}
+                    label="Description"
+                    value={formik.values.productname}
                     onChange={formik.handleChange}
                     fullWidth
                     required
                   ></TextField>
-                  {formik.errors.title ? (
-                    <p className="text-danger">{formik.errors.title}</p>
-                  ) : null}
-                </div>
-                <div className="form-outline mb-2">
-                  <TextField
-                    name="languages"
-                    margin="dense"
-                    type="text"
-                    placeholder="Languages"
-                    variant="outlined"
-                    label="Languages"
-                    value={formik.values.languages}
-                    onChange={formik.handleChange}
-                    fullWidth
-                    required
-                  ></TextField>
-                  {formik.errors.languages ? (
-                    <p className="text-danger">{formik.errors.languages}</p>
-                  ) : null}
-                </div>
-                <div className="form-outline mb-2">
-                  <TextField
-                    name="link"
-                    margin="dense"
-                    type="text"
-                    placeholder="Link"
-                    variant="outlined"
-                    label="Link"
-                    value={formik.values.link}
-                    onChange={formik.handleChange}
-                    fullWidth
-                    required
-                  ></TextField>
-                  {formik.errors.link ? (
-                    <p className="text-danger">{formik.errors.link}</p>
-                  ) : null}
-                </div>
-                <div className="form-outline mb-2">
-                  <TextField
-                    name="image"
-                    margin="dense"
-                    type="file"
-                    variant="outlined"
-                    label=" Images"
-                    fullWidth
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <label htmlFor="image">Upload Image</label>
-                        </InputAdornment>
-                      ),
-                      inputProps: {
-                        accept: ".jpg, .png, .jpeg",
-                        onChange: (event) => {
-                          formik.setFieldValue(
-                            "image",
-                            event.currentTarget.files[0]
-                          );
-                        },
-                      },
-                    }}
-                  />
-                  {formik.errors.image ? (
-                    <p className="text-danger">{formik.errors.image}</p>
+                  {formik.errors.description ? (
+                    <p className="text-danger">{formik.errors.description}</p>
                   ) : null}
                 </div>
 
@@ -334,10 +246,8 @@ const AddProjects = ({ role }) => {
             <thead>
               <tr>
                 <th scope="col">Sr. No</th>
-                <th scope="col">Project Name</th>
-                <th scope="col">languages</th>
-                <th scope="col">link</th>
-                <th scope="col">Images</th>
+                <th scope="col">Description</th>
+
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -347,21 +257,7 @@ const AddProjects = ({ role }) => {
                 return (
                   <tr key={item.id}>
                     <th scope="row">{index + 1}</th>
-                    <td>{item.title}</td>
-                    <td>{item.languages}</td>
-                    <td>
-                      <a href={item.link}>View</a>
-                    </td>
-                    <td>
-                      <a href={item.image} target="_blank">
-                        <img
-                          width="50"
-                          height="50"
-                          src={item.image}
-                          // alt={item.file}
-                        />
-                      </a>
-                    </td>
+                    <td>{item.description}</td>
 
                     <td>
                       <button className="btn btn-success text-white">
@@ -384,4 +280,4 @@ const AddProjects = ({ role }) => {
   );
 };
 
-export default AddProjects;
+export default AddAbout;
