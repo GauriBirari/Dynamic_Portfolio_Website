@@ -1,0 +1,14 @@
+/* Sidebar.css */
+.sidebar-menu .ant-menu-item,
+.sidebar-menu .ant-menu-submenu-title {
+    font-size: 18px;
+    /* Adjust the font size as needed */
+}
+
+.sidebar-menu .ant-menu-item-selected {
+    background-color: rgb(211, 77, 0) !important;
+}
+
+.sidebar-menu .ant-menu-item:hover {
+    background-color: rgb(211, 77, 0) !important;
+}

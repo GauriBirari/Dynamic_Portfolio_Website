@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "3f2b8b34-b2b7-44d5-9284-68676359fe2a",
+		"name": "Dynamic_Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36780286"
+	},
+	"item": [
+		{
+			"name": "projects",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "url",
+									"type": "text"
+								},
+								{
+									"key": "languages",
+									"value": "language",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/The Innovative/Downloads/WhatsApp Image 2024-11-26 at 2.14.54 PM (2).jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/project/addproject",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"project",
+								"addproject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/project/getallprojects",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"project",
+								"getallprojects"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"mobile\": \"9898989898\",\r\n  \"email\": \"Pingle@gmail.com\",\r\n  \"message\": \"Clerk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/contact/addcontact",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"contact",
+								"addcontact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "about",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"lorem\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/about/addabout",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"about",
+								"addabout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/about/getallabout",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"about",
+								"getallabout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
