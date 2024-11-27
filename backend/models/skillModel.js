@@ -1,23 +1,20 @@
 const mongoose = require("mongoose");
 
-const ContactSchema = new mongoose.Schema(
+const skillSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
-    mobile: {
+    level: {
       type: String,
       required: true,
     },
-    email: {
+    type: {
       type: String,
       required: true,
     },
-    message: {
-      type: String,
-      required: true,
-    },
+
     date: {
       type: Date,
       default: Date.now,
@@ -26,5 +23,5 @@ const ContactSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Contact = mongoose.model("contact", ContactSchema);
-module.exports = Contact;
+const Skills = mongoose.model("skill", skillSchema);
+module.exports = Skills;

@@ -4,28 +4,59 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import axios from "axios";
+import { server } from "../../common";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { AxiosError } from "axios";
+
+const initialValues = {
+  name: "",
+  email: "",
+  message: "",
+  mobile: "",
+};
 
 const Contact = () => {
-  const [data, setData] = useState({
-    myname: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/contact",
-        data
-      );
-      console.log(response.data);
-      alert("Message Sent Successfully");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { values, handleBlur, handleSubmit, handleChange, resetForm, errors } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: Yup.object({
+        name: Yup.string()
+          .min(2, "Enter Your Name")
+          .required("Name Is Required"),
+        mobile: Yup.string()
+          .min(2, "Enter Your Mobile Number")
+          .required("Mobile Number Is Required"),
+        email: Yup.string()
+          .email("Enter Valid Email Address")
+          .required("Email Is Required"),
+        message: Yup.string()
+          .min(2, "Enter Message")
+          .required("Message Is Required"),
+      }),
+      onSubmit: (values, action) => {
+        console.log(values);
+        server
+          .post("/contact/addcontact", values, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then(function (response) {
+            console.log("api response", response.data);
+            if (response.status === 200 || response.status === 201) {
+              if (response.data) {
+                toast.success("Message Sent successfully");
+                resetForm();
+              }
+            }
+          })
+          .catch(function (error) {
+            toast.error(error.response.data.message);
+          });
+      },
+    });
   return (
     <section id="contact">
       <h5>Get In Touch</h5>
@@ -66,23 +97,31 @@ const Contact = () => {
           <input
             type="text"
             name="name"
-            value={data.myname}
-            onChange={(e) => setData({ ...data, myname: e.target.value })}
+            value={values.name}
+            onChange={handleChange}
             placeholder="Your Full Name"
             required
           />
           <input
+            type="number"
+            name="mobile"
+            value={values.mobile}
+            onChange={handleChange}
+            placeholder="Your Contact Number"
+            required
+          />
+          <input
             type="email"
-            value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
+            value={values.email}
+            onChange={handleChange}
             name="email"
             placeholder="Your Email"
             required
           />
           <textarea
             name="message"
-            value={data.message}
-            onChange={(e) => setData({ ...data, message: e.target.value })}
+            value={values.message}
+            onChange={handleChange}
             rows="7"
             placeholder="Your Message"
             required
