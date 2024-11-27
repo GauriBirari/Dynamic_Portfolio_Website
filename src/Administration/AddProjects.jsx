@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useSelectAccess } from "../store/stateFunctions";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 const initialValues = {
   productname: "",
@@ -31,7 +33,7 @@ const initialValues = {
 
 const swalalert = withReactContent(Swal);
 
-const AddProjects = ({ role }) => {
+const AddP = ({ role }) => {
   const user = useSelectAccess("Super Admin");
 
   const [show, setShow] = useState(false);
@@ -280,32 +282,6 @@ const AddProjects = ({ role }) => {
         className="container"
         style={{ overflow: "scroll", height: "470px" }}
       >
-        <div className="row my-3">
-          <div className="col-md-4">
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Search "
-              onChange={(e) => SearchData(e.target.value)}
-            />
-          </div>
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
-            <select
-              className="form-control"
-              name=""
-              id=""
-              onChange={(e) => FilterData(e)} // Pass the event to FilterData
-            >
-              <option value="Women" defaultValue>
-                Women
-              </option>
-              <option value="Men" defaultValue>
-                Mens
-              </option>
-            </select>
-          </div>
-        </div>
         <div className="d-flex position-relative mb-3 justify-content-center ">
           <h5 className="m-auto text-center">Previous Products</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
@@ -492,4 +468,4 @@ const AddProjects = ({ role }) => {
   );
 };
 
-export default AddProjects;
+export default AddP;

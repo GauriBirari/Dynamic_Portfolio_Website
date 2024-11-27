@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import { server } from "../common";
 // import configContext from "../contexts/configContext/configContexts";
 import { loginSuperAdmin } from "../store/actions/superAdminActions";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 const initialValues = {
   email: "",

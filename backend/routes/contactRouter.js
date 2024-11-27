@@ -1,11 +1,13 @@
 const express = require("express");
 const router = new express.Router();
 const nodemailer = require("nodemailer");
+const Contact = require("../models/contactModels");
+
 const emailValidator = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
-const Contact = require("../models/contactModel");
+
 router.post("/addcontact", async (req, res) => {
   const { name, email, mobile, message } = req.body;
   if (!emailValidator(email)) {
@@ -18,6 +20,7 @@ router.post("/addcontact", async (req, res) => {
       mobile,
       message,
     });
+
     // Send email
     const emailSubject = "Enquiry Recieved - Gauri Birari Portfolio";
     const emailText = `Hello ${name},\n\n Your Enquiry has been submitted successfully. i will contact you soon\n\nFrom\nGauri Birari\n `;
@@ -58,5 +61,15 @@ function sendEmail(to, subject, text) {
     }
   });
 }
+
+router.get("/getallcontacts", async (req, res) => {
+  try {
+    const getcontact = await Contact.find();
+    res.status(200).json(getcontact);
+  } catch (error) {
+    console.error("Error getting project:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 module.exports = router;

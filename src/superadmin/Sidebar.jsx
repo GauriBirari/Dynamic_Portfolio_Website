@@ -11,8 +11,8 @@ import { Layout, Menu, theme } from "antd";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { logoutAccess, useSelectAccess } from "../store/stateFunctions";
 import { Button } from "@mui/material";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 const { Sider, Content, Header } = Layout;
 
@@ -63,11 +63,6 @@ const Sidebar = () => {
             }}
             items={[
               {
-                key: "users",
-                icon: <FaUser className="fs-4" />,
-                label: "Registered Users",
-              },
-              {
                 key: "addproducts",
                 icon: <FaProductHunt className="fs-4" />,
                 label: "Add Products",
@@ -82,33 +77,6 @@ const Sidebar = () => {
                 icon: <AiFillContacts className="fs-4" />,
                 label: "Contact Entries",
               },
-              // {
-              //   key: "Feeds",
-              //   icon: <MdOutlineDynamicFeed className="fs-4" />,
-              //   label: "Feeds",
-              //   children: [
-              //     {
-              //       key: "addevents",
-              //       icon: <RiDashboardFill className="fs-4" />,
-              //       label: "Events",
-              //     },
-              //     {
-              //       key: "addbiocngproject",
-              //       icon: <RiDashboardFill className="fs-4" />,
-              //       label: "Blogs",
-              //     },
-              //     {
-              //       key: "adddairyproject",
-              //       icon: <RiDashboardFill className="fs-4" />,
-              //       label: "Polls/Survey",
-              //     },
-              //     {
-              //       key: "addnews",
-              //       icon: <RiDashboardFill className="fs-4" />,
-              //       label: "News",
-              //     },
-              //   ],
-              // },
             ]}
             className="sidebar-menu"
             style={{ color: "white" }}

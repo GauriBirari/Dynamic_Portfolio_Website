@@ -7,6 +7,7 @@ import SuperAdminSessionContainer from "./containers/SuperAdminSessionContainer"
 import AddProjects from "./Administration/AddProjects";
 import SuperAdminLogin from "./superadmin/SuperAdminLogin";
 import Home from "./pages/Home";
+import ContactEntries from "./Administration/ContactEntries";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/super-admin" element={<SuperAdminLogin />} />
         <Route path="/super-admin" element={<SuperAdminSessionContainer />}>
           <Route path="addprojects" element={<AddProjects />} />
+          <Route path="contactentries" element={<ContactEntries />} />
         </Route>
       </Routes>
     </>
