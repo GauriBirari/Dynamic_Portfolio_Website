@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"mobile\": \"9898989898\",\r\n  \"email\": \"Pingle@gmail.com\",\r\n  \"message\": \"Clerk\"\r\n}",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"mobile\": \"9898989898\",\r\n  \"email\": \"gauri.codecraft@gmail.com\",\r\n  \"message\": \"Clerk\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,7 +106,17 @@
 					"name": "getall",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/contact/getallcontacts",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"contact",
+								"getallcontacts"
+							]
+						}
 					},
 					"response": []
 				}
