@@ -128,15 +128,6 @@ const data = [
     demo: "https://dribbble.com/shots/17290917-Eclipse-Figma-dashboard-UI-kit-for-data-design-web-apps",
     languages: "React Js, Bootstrap",
   },
-  // {
-  //   id: 7,
-  //   image: IMG6,
-  //   title: "NULM",
-  //   description: "",
-  //   github: "https://github.com",
-  //   demo: "https://dribbble.com/shots/15887665-Orion-UI-kit-Charts-templates-infographics-in-Figma",
-  //   languages: "React Js, Bootstrap",
-  // },
 
   {
     id: 8,
