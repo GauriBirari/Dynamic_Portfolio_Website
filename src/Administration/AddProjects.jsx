@@ -72,7 +72,7 @@ const AddProjects = ({ role }) => {
       .get("/project/getallprojects", {
         headers: {
           "Content-Type": "application/json",
-          // "auth-token": user.authToken,
+          Authorization: user.authToken,
         },
       })
       .then(function (response) {
@@ -112,7 +112,7 @@ const AddProjects = ({ role }) => {
             .delete(`/project/deleteproject/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
-                // Authorization: user.authToken,
+                Authorization: user.authToken,
               },
             })
             .then(function (response) {
@@ -147,12 +147,12 @@ const AddProjects = ({ role }) => {
     formData.append("languages", values.languages);
     formData.append("link", values.link);
 
-    if (values.image) {
-      formData.append("image", values.image);
-    }
+    // if (values.image) {
+    //   formData.append("image", values.image);
+    // }
 
     server
-      .put(`/product/updateproducts/${values._id}`, formData, {
+      .put(`/project/updateproject/${values._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: user.authToken,
@@ -161,7 +161,7 @@ const AddProjects = ({ role }) => {
       .then(function (response) {
         formik.resetForm();
         getData();
-        toast.success("Products Updated successfully");
+        toast.success("Project Updated successfully");
         handleClose();
       })
       .catch(function (error) {
@@ -199,7 +199,7 @@ const AddProjects = ({ role }) => {
           .post("/project/addproject", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
-              // Authorization: user.authToken,
+              Authorization: user.authToken,
             },
           })
           .then(function (response) {

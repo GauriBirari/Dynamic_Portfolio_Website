@@ -23,7 +23,7 @@ const ContactEntries = ({ role }) => {
       .get("/contact/getallcontacts", {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: user.authToken,
+          Authorization: user.authToken,
         },
       })
       .then(function (response) {

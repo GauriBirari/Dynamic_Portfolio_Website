@@ -214,10 +214,10 @@ const Portfolio = () => {
                 <img src={image} alt={title} />
               </div>
               <h3>{title}</h3>
-              <p>{languages}</p>
               <p>
                 <BiCodeAlt className="mt-1" /> {languages}
               </p>
+
               <div className="portfolio__item-cta">
                 {/* <a href={github} className="btn">
                     Github

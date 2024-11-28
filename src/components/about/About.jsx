@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./about.css";
 import ME from "../../assets/gau (2).jpg";
 import { FaTags, FaUsers, FaFolderOpen, FaAndroid } from "react-icons/fa";
 import { BiCodeAlt } from "react-icons/bi";
+import { server } from "../../common";
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const About = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Get
+  const getData = () => {
+    setLoading(true);
+
+    server
+      .get("/about/getallabout", {
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": user.authToken,
+        },
+      })
+      .then(function (response) {
+        console.log("api response", response.data);
+        if (response.status === 200 || response.status === 201) {
+          setData(response.data);
+        }
+        setLoading(false);
+      })
+      .catch(function (error) {
+        if (error instanceof AxiosError && error.response?.data?.message)
+          toast.error(error.response.data.message);
+        else if (error.response?.data?.error) {
+          toast.error(error.response.data.error);
+        } else console.log("Failed to connect to server");
+      });
+  };
+
   return (
     <section id="about">
       <h5>Get To Know</h5>
@@ -34,22 +71,18 @@ const About = () => {
               <small>15+ Completed</small>
             </article>
           </div>
+
           <p>
-            💬 I enjoy learning and navigating new ideas and themes to help
-            improve my skills. I like meeting and communicating with new
-            peoples. I always try to come up with creative solutions to problem.
-            <br />
-            🔭 I’m currently working on NMC Garden Website
-            <br />
-            🌱 I’m currently learning Advance React Js
-            <br />
-            💬 Ask me about Front-end Web Development and Website Design Part
-            <br />
-            📫 How to reach me gauribirari2708@gmail.com <br />
-            📄 Know about my experiences
-            <a href="https://drive.google.com/file/d/1ksCYusnRzx5Tx7kWmHuqu1VCnQgNhajd/view?usp=drive_link">
-              Resume
-            </a>
+            {" "}
+            {data.map((item) => {
+              return (
+                <>
+                  <ol>
+                    <li>{item.description}</li>
+                  </ol>
+                </>
+              );
+            })}
           </p>
           <a href="#contact" className="btn btn-primary">
             Let's Talk

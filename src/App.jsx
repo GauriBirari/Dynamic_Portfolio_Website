@@ -9,6 +9,7 @@ import SuperAdminLogin from "./superadmin/SuperAdminLogin";
 import Home from "./pages/Home";
 import ContactEntries from "./Administration/ContactEntries";
 import AddAbout from "./Administration/AddAbout";
+import AddSkills from "./Administration/AddSkills";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="addprojects" element={<AddProjects />} />
           <Route path="contactentries" element={<ContactEntries />} />
           <Route path="addabout" element={<AddAbout />} />
+          <Route path="addskills" element={<AddSkills />} />
         </Route>
       </Routes>
     </>

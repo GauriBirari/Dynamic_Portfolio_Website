@@ -21,6 +21,35 @@ router.post("/addproject", saveProjectImage, async (req, res) => {
   }
 });
 
+router.put("/updateproject/:id", saveProjectImage, async (req, res) => {
+  const { id } = req.params;
+  const { filename } = req.file || {};
+  const { title, languages, link } = req.body;
+
+  try {
+    const projectToUpdate = await Project.findByIdAndUpdate(id, req.body);
+    if (!projectToUpdate) {
+      return res.status(404).json({ message: "project not found" });
+    }
+
+    projectToUpdate.title = title;
+    projectToUpdate.languages = languages;
+    projectToUpdate.link = link;
+
+    // Only update the image if a new file is provided
+    if (filename) {
+      const url = req.protocol + "://" + req.get("host");
+      projectToUpdate.image = url + "/public/uploads/" + filename;
+    }
+
+    const updatedProject = await projectToUpdate.save();
+    res.status(200).json(updatedProject);
+  } catch (error) {
+    console.error("Error updating project:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 router.get("/getallprojects", saveProjectImage, async (req, res) => {
   try {
     const getprojects = await Project.find();
@@ -32,13 +61,13 @@ router.get("/getallprojects", saveProjectImage, async (req, res) => {
 });
 
 router.delete("/deleteproject/:id", async (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
   try {
-    const deleteproject = await Project.findByIdAndDelete(id)
-    res.status(200).json(deleteproject)
+    const deleteproject = await Project.findByIdAndDelete(id);
+    res.status(200).json(deleteproject);
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 module.exports = router;

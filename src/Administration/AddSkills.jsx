@@ -25,14 +25,13 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 const initialValues = {
   title: "",
-  languages: "",
-  link: "",
-  image: null,
+  level: "",
+  type: "",
 };
 
 const swalalert = withReactContent(Swal);
 
-const AddProjects = ({ role }) => {
+const AddSkills = ({ role }) => {
   const user = useSelectAccess("Super Admin");
 
   const [show, setShow] = useState(false);
@@ -59,9 +58,8 @@ const AddProjects = ({ role }) => {
     if (isEditMode && selectedData) {
       formik.setValues({
         title: selectedData.title,
-        languages: selectedData.languages,
-        link: selectedData.link,
-        image: selectedData.image,
+        level: selectedData.level,
+        type: selectedData.type,
       });
     }
   }, [isEditMode, selectedData]);
@@ -69,10 +67,10 @@ const AddProjects = ({ role }) => {
   // Get
   const getData = () => {
     server
-      .get("/project/getallprojects", {
+      .get("/skill/getallskill", {
         headers: {
           "Content-Type": "application/json",
-          // "auth-token": user.authToken,
+          Authorization: user.authToken,
         },
       })
       .then(function (response) {
@@ -109,7 +107,7 @@ const AddProjects = ({ role }) => {
       .then(function (swalObject) {
         if (swalObject.isConfirmed) {
           server
-            .delete(`/product/deleteproducts/${data._id}`, {
+            .delete(`/skill/deleteskill/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: user.authToken,
@@ -142,26 +140,17 @@ const AddProjects = ({ role }) => {
 
   // update
   const handleUpdate = (values) => {
-    const formData = new FormData();
-    formData.append("title", values.title);
-    formData.append("languages", values.languages);
-    formData.append("link", values.link);
-
-    if (values.image) {
-      formData.append("image", values.image);
-    }
-
     server
-      .put(`/product/updateproducts/${values._id}`, formData, {
+      .put(`/skill/updateskill/${values._id}`, values, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
           Authorization: user.authToken,
         },
       })
       .then(function (response) {
         formik.resetForm();
         getData();
-        toast.success("Products Updated successfully");
+        toast.success("Data Updated successfully");
         handleClose();
       })
       .catch(function (error) {
@@ -177,28 +166,17 @@ const AddProjects = ({ role }) => {
     initialValues: isEditMode ? selectedData : initialValues,
     validationSchema: Yup.object({
       title: Yup.string().required("Enter a Product title"),
-      languages: Yup.string().required("Enter a Product languages"),
-      link: Yup.string().required("Enter a Product type"),
-      image: Yup.mixed().required("Please select an image"),
+      level: Yup.string().required("Enter a Product level"),
+      type: Yup.string().required("Enter a Product type"),
     }),
     onSubmit: (values, action) => {
       if (isEditMode) {
         handleUpdate({ ...values, _id: selectedData._id });
       } else {
-        if (!values.image) {
-          toast.error("Please select a images");
-          return;
-        }
-        const formData = new FormData();
-        formData.append("title", values.title);
-        formData.append("languages", values.languages);
-        formData.append("link", values.link);
-        formData.append("image", values.image);
-
         server
-          .post("/project/addproject", formData, {
+          .post("/skill/addskill", values, {
             headers: {
-              "Content-Type": "multipart/form-data",
+              "Content-Type": "application/json",
               Authorization: user.authToken,
             },
           })
@@ -224,14 +202,11 @@ const AddProjects = ({ role }) => {
   return (
     <>
       {console.log(formik.values.errors)}
-      <div
-        className="container"
-        style={{ overflow: "scroll", height: "470px" }}
-      >
+      <div className="" style={{ overflow: "scroll", height: "470px" }}>
         <div className="d-flex position-relative mb-3 justify-content-center ">
-          <h5 className="m-auto text-center">Previous Products</h5>
+          <h5 className="m-auto text-center">Previous Skills</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
-            Add Products
+            Add Skills
           </Button>
 
           <Modal show={show} onHide={handleClose}>
@@ -261,19 +236,19 @@ const AddProjects = ({ role }) => {
                 </div>
                 <div className="form-outline mb-2">
                   <TextField
-                    name="languages"
+                    name="level"
                     margin="dense"
                     type="text"
-                    placeholder="Languages"
+                    placeholder="Level"
                     variant="outlined"
-                    label="Languages"
-                    value={formik.values.languages}
+                    label="Level"
+                    value={formik.values.level}
                     onChange={formik.handleChange}
                     fullWidth
                     required
                   ></TextField>
-                  {formik.errors.languages ? (
-                    <p className="text-danger">{formik.errors.languages}</p>
+                  {formik.errors.level ? (
+                    <p className="text-danger">{formik.errors.level}</p>
                   ) : null}
                 </div>
 
@@ -303,35 +278,6 @@ const AddProjects = ({ role }) => {
                   </FormControl>
                 </div>
 
-                <div className="form-outline mb-2">
-                  <TextField
-                    name="image"
-                    margin="dense"
-                    type="file"
-                    variant="outlined"
-                    label="Products Images"
-                    fullWidth
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <label htmlFor="image">Upload Image</label>
-                        </InputAdornment>
-                      ),
-                      inputProps: {
-                        accept: ".jpg, .png, .jpeg",
-                        onChange: (event) => {
-                          formik.setFieldValue(
-                            "image",
-                            event.currentTarget.files[0]
-                          );
-                        },
-                      },
-                    }}
-                  />
-                  {formik.errors.image ? (
-                    <p className="text-danger">{formik.errors.image}</p>
-                  ) : null}
-                </div>
                 <div className="pt-1 mb-2 ">
                   <Button variant="contained" type="submit">
                     {isEditMode ? "Update" : "Post"}
@@ -346,10 +292,9 @@ const AddProjects = ({ role }) => {
             <thead>
               <tr>
                 <th scope="col">Sr. No</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">languages</th>
-                <th scope="col">Category</th>
-                <th scope="col">Images</th>
+                <th scope="col">Title</th>
+                <th scope="col">level</th>
+                <th scope="col">Type</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -360,19 +305,8 @@ const AddProjects = ({ role }) => {
                   <tr key={item.id}>
                     <th scope="row">{index + 1}</th>
                     <td>{item.title}</td>
-                    <td>{item.languages}</td>
-                    <td>{item.price}</td>
-                    <td>{item.category}</td>
-                    <td>
-                      <a href={item.image} target="_blank">
-                        <img
-                          width="50"
-                          height="50"
-                          src={item.image}
-                          // alt={item.file}
-                        />
-                      </a>
-                    </td>
+                    <td>{item.level}</td>
+                    <td>{item.type}</td>
 
                     <td>
                       <button className="btn btn-success text-white">
@@ -395,4 +329,4 @@ const AddProjects = ({ role }) => {
   );
 };
 
-export default AddProjects;
+export default AddSkills;

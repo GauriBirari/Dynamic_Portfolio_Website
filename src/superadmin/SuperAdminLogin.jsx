@@ -65,7 +65,7 @@ function SuperAdminLogin() {
             if (response.data) {
               dispatch(loginSuperAdmin({ authToken: response.data.token }));
               toast.success("Super Admin Login successfully");
-              navigate("/super-admin/addproducts");
+              navigate("/super-admin/addprojects");
               resetForm();
               // setProgress(100);
             }
@@ -77,7 +77,7 @@ function SuperAdminLogin() {
             toast.error(error.response.data.message);
           else if (error.response?.data?.error) {
             toast.error(error.response.data.error);
-          } else toast.error("Failed to connect to server");
+          } else toast.error(error.response.data.error);
           // setProcessing(false);
           // setProgress(100);
         });
@@ -87,7 +87,7 @@ function SuperAdminLogin() {
 
   return (
     <div>
-      <section className="vh-100">
+      <section className="">
         <div className="container py-5 h-100 ">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">

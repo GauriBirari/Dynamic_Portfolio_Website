@@ -73,6 +73,11 @@ const Sidebar = () => {
                 label: "Add About Details",
               },
               {
+                key: "addskills",
+                icon: <TfiLayoutSlider className="fs-4" />,
+                label: "Add Skills",
+              },
+              {
                 key: "contactentries",
                 icon: <AiFillContacts className="fs-4" />,
                 label: "Contact Entries",
@@ -114,9 +119,9 @@ const Sidebar = () => {
             background: colorBgContainer,
           }}
         >
-          {/* {superadmin ? <Outlet /> : <Navigate to="/super-admin" />}
-           */}
-          <Outlet />
+          {" "}
+          {superadmin ? <Outlet /> : <Navigate to="/super-admin" />}
+          {/* <Outlet /> */}
         </Content>
       </Layout>
     </Layout>

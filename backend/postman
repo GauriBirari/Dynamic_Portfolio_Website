@@ -69,6 +69,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/project/updateproject",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"project",
+								"updateproject"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -165,6 +183,242 @@
 							"path": [
 								"about",
 								"getallabout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\":\"How to reach me gauribirari2708@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/about/updateabout/6748418b35d3c3fe8934cbc6",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"about",
+								"updateabout",
+								"6748418b35d3c3fe8934cbc6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"gauri\",\r\n    \"email\":\"admin@gmail.com\",\r\n    \"mobile\":\"7676767676\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/admin/register",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"gauri\",\r\n    \"email\":\"admin@gmail.com\",\r\n    \"mobile\":\"7676767676\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/admin/login",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/admin/getalladmins",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"admin",
+								"getalladmins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getprofile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDgyZjI1NmE4NmNmYWIyN2I3MGEwMyIsImlhdCI6MTczMjc4NDEyNywiZXhwIjoxNzMyNzg1MDI3fQ.a3NIyypy2QgoIkgOURlOeBzGciox5LxqSicngJKMHuQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{portfolioUrl}}/admin/getprofile",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"admin",
+								"getprofile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "skill",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"add\",\r\n    \"level\":\"add\",\r\n    \"type\":\"add\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{portfolioUrl}}/skill/addskill",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"skill",
+								"addskill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/skill/getallskill",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"skill",
+								"getallskill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "certification",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/certification/addcertificate",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"certification",
+								"addcertificate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{portfolioUrl}}/certification/getcertificates",
+							"host": [
+								"{{portfolioUrl}}"
+							],
+							"path": [
+								"certification",
+								"getcertificates"
 							]
 						}
 					},

@@ -3,6 +3,8 @@ const router = express.Router();
 const Admin = require("../models/AdminModel");
 const { body, validationResult } = require("express-validator");
 const randomstring = require("randomstring");
+const { generateRefreshToken } = require("../config/refreshToken");
+const generateToken = require("../config/jwtToken");
 
 const emailValidator = (email) => {
   // Regular expression for basic email validation

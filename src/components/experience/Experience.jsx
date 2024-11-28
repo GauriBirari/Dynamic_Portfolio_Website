@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./experience.css";
 import { BsCodeSquare, BsPatchCheckFill } from "react-icons/bs";
 import { BiCodeAlt } from "react-icons/bi";
 import { AiFillCalendar } from "react-icons/ai";
+import { server } from "../../common";
+import { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const Experience = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Get
+  const getData = () => {
+    setLoading(true);
+
+    server
+      .get("/skill/getallskill", {
+        headers: {
+          "Content-Type": "application/json",
+          // "auth-token": user.authToken,
+        },
+      })
+      .then(function (response) {
+        console.log("api response", response.data);
+        if (response.status === 200 || response.status === 201) {
+          setData(response.data);
+        }
+        setLoading(false);
+      })
+      .catch(function (error) {
+        if (error instanceof AxiosError && error.response?.data?.message)
+          toast.error(error.response.data.message);
+        else if (error.response?.data?.error) {
+          toast.error(error.response.data.error);
+        } else console.log("Failed to connect to server");
+      });
+  };
+
   return (
     <>
       <section id="experience">
@@ -13,138 +50,58 @@ const Experience = () => {
         <div className="container experience__container">
           <div className="experience__frontend">
             <h3>Frontend Development</h3>
-            <div className="experience__content">
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>HTML5</h5>
-                  <small className="text-light">Experienced</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>CSS3</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>JavaScript</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Bootstrap5</h5>
-                  <small className="text-light">Experienced</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>React Js</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>React Native</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-            </div>
+            {data.map((item, index) => {
+              return (
+                item.type === "frontend" && (
+                  <div className="experience__content" key={index}>
+                    <article className="experience__details">
+                      <BsPatchCheckFill className="experience__details-icon" />
+                      <div>
+                        <h5>{item.title}</h5>
+                        <small className="text-light">{item.level}</small>
+                      </div>
+                    </article>
+                  </div>
+                )
+              );
+            })}
           </div>
           <div className="experience__backend">
             <h3>Backend Development</h3>
-            <div className="experience__content">
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Node JS</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>MongoDB</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Express Js</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Thunder Client</h5>
-                  <small className="text-light">Basic</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Postman</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>MySql</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-            </div>
+            {data.map((item, index) => {
+              return (
+                item.type === "backend" && (
+                  <div className="experience__content" key={index}>
+                    <article className="experience__details">
+                      <BsPatchCheckFill className="experience__details-icon" />
+                      <div>
+                        <h5>{item.title}</h5>
+                        <small className="text-light">{item.level}</small>
+                      </div>
+                    </article>
+                  </div>
+                )
+              );
+            })}
           </div>
 
           <div className="experience__backend">
             <h3>Extra Things</h3>
-            <div className="experience__content">
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Balsamique</h5>
-                  <small className="text-light">Experienced</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Canva</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Wireframe</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Figma</h5>
-                  <small className="text-light">Basic</small>
-                </div>
-              </article>
-              <article className="experience__details">
-                <BsPatchCheckFill className="experience__details-icon" />
-                <div>
-                  <h5>Git & Github</h5>
-                  <small className="text-light">Intermediate</small>
-                </div>
-              </article>
-            </div>
+            {data.map((item, index) => {
+              return (
+                item.type === "other" && (
+                  <div className="experience__content" key={index}>
+                    <article className="experience__details">
+                      <BsPatchCheckFill className="experience__details-icon" />
+                      <div>
+                        <h5>{item.title}</h5>
+                        <small className="text-light">{item.level}</small>
+                      </div>
+                    </article>
+                  </div>
+                )
+              );
+            })}
           </div>
         </div>
       </section>
@@ -154,7 +111,7 @@ const Experience = () => {
         <h2>My Experience</h2>
         <div className="container experience__container1">
           <div className="experience__frontend1">
-            <h2>React Js Developer</h2>
+            <h4>React Js Developer</h4>
             <h3>The Innovative Solutions</h3>
             <article
               className="experience__details"

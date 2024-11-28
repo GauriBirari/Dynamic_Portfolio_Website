@@ -21,15 +21,34 @@ router.get("/getallabout", async (req, res) => {
   }
 });
 
+router.put("/updateabout/:id", async (req, res) => {
+  const { id } = req.params;
+  const { description } = req.body;
+
+  try {
+    const aboutToUpdate = await About.findByIdAndUpdate(id, req.body);
+    if (!aboutToUpdate) {
+      return res.status(404).json({ message: "data not found" });
+    }
+
+    aboutToUpdate.description = description;
+
+    const updatedAbout = await aboutToUpdate.save();
+    res.status(200).json(updatedAbout);
+  } catch (error) {
+    console.error("Error updating data:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 router.delete("/deleteabout/:id", async (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
   try {
-    const deleteabout = await About.findByIdAndDelete(id)
-    res.status(200).json(deleteabout)
+    const deleteabout = await About.findByIdAndDelete(id);
+    res.status(200).json(deleteabout);
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 module.exports = router;

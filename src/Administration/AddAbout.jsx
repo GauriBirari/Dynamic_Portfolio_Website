@@ -66,7 +66,7 @@ const AddAbout = ({ role }) => {
       .get("/about/getallabout", {
         headers: {
           "Content-Type": "application/json",
-          // "auth-token": user.authToken,
+          Authorization: user.authToken,
         },
       })
       .then(function (response) {
@@ -106,7 +106,7 @@ const AddAbout = ({ role }) => {
             .delete(`/about/deleteabout/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
-                // Authorization: user.authToken,
+                Authorization: user.authToken,
               },
             })
             .then(function (response) {
@@ -137,7 +137,7 @@ const AddAbout = ({ role }) => {
   // update
   const handleUpdate = (values) => {
     server
-      .put(`/product/updateproducts/${values._id}`, values, {
+      .put(`/about/updateabout/${values._id}`, values, {
         headers: {
           "Content-Type": "application/json",
           Authorization: user.authToken,
@@ -146,7 +146,7 @@ const AddAbout = ({ role }) => {
       .then(function (response) {
         formik.resetForm();
         getData();
-        toast.success("Products Updated successfully");
+        toast.success("Data Updated successfully");
         handleClose();
       })
       .catch(function (error) {
@@ -171,7 +171,7 @@ const AddAbout = ({ role }) => {
           .post("/about/addabout", values, {
             headers: {
               "Content-Type": "application/json",
-              // Authorization: user.authToken,
+              Authorization: user.authToken,
             },
           })
           .then(function (response) {
@@ -196,10 +196,7 @@ const AddAbout = ({ role }) => {
   return (
     <>
       {console.log(formik.values.errors)}
-      <div
-        className="container"
-        style={{ overflow: "scroll", height: "470px" }}
-      >
+      <div className="" style={{ overflow: "scroll", height: "470px" }}>
         <div className="d-flex position-relative mb-3 justify-content-center ">
           <h5 className="m-auto text-center">Previous Data</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
@@ -222,7 +219,7 @@ const AddAbout = ({ role }) => {
                     placeholder="Description"
                     variant="outlined"
                     label="Description"
-                    value={formik.values.productname}
+                    value={formik.values.description}
                     onChange={formik.handleChange}
                     fullWidth
                     required

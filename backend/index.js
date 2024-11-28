@@ -20,8 +20,9 @@ app.use("/api/contact", require("./routes/contactRouter"));
 app.use("/api/project", require("./routes/projectRouter"));
 app.use("/api/about", require("./routes/aboutRouter"));
 app.use("/api/skill", require("./routes/skillRouter"));
+app.use("/api/certification", require("./routes/certificationRouter"));
 app.use("/api/admin", require("./routes/adminRouter"));
 
 app.listen(port, () => {
-    console.log(`app is running on ${port}`);
+  console.log(`app is running on ${port}`);
 });
