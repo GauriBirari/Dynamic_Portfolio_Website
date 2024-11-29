@@ -147,9 +147,9 @@ const AddProjects = ({ role }) => {
     formData.append("languages", values.languages);
     formData.append("link", values.link);
 
-    // if (values.image) {
-    //   formData.append("image", values.image);
-    // }
+    if (values.image) {
+      formData.append("image", values.image);
+    }
 
     server
       .put(`/project/updateproject/${values._id}`, formData, {

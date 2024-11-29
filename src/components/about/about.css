@@ -71,7 +71,9 @@
   color: var(--color-white);
   text-align: start;
 }
-
+li {
+  list-style-type: circle;
+}
 /* ========== MEDIA QUERIES (MEDIUM DEVICES) ========== */
 @media screen and (max-width: 1024px) {
   .about__container {

@@ -117,11 +117,7 @@ const AddCertification = ({ role }) => {
             .then(function (response) {
               console.log("api response", response.data);
               if (response.status === 200 || response.status === 201) {
-                swalalert.fire(
-                  "Deleted!",
-                  "Product has been deleted.",
-                  "success"
-                );
+                swalalert.fire("Deleted!", "Data has been deleted.", "success");
                 getData();
               }
             })
@@ -144,12 +140,12 @@ const AddCertification = ({ role }) => {
     const formData = new FormData();
     formData.append("title", values.title);
 
-    // if (values.image) {
-    //   formData.append("image", values.image);
-    // }
+    if (values.image) {
+      formData.append("image", values.image);
+    }
 
     server
-      .put(`/project/updateproject/${values._id}`, formData, {
+      .put(`/certification/updatecertification/${values._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: user.authToken,
@@ -158,7 +154,7 @@ const AddCertification = ({ role }) => {
       .then(function (response) {
         formik.resetForm();
         getData();
-        toast.success("Project Updated successfully");
+        toast.success("Data Updated successfully");
         handleClose();
       })
       .catch(function (error) {
@@ -173,8 +169,7 @@ const AddCertification = ({ role }) => {
   const formik = useFormik({
     initialValues: isEditMode ? selectedData : initialValues,
     validationSchema: Yup.object({
-      title: Yup.string().required("Enter a Product title"),
-
+      title: Yup.string().required("Enter a Data title"),
       image: Yup.mixed().required("Please select an image"),
     }),
     onSubmit: (values, action) => {
@@ -220,15 +215,17 @@ const AddCertification = ({ role }) => {
       {console.log(formik.values.errors)}
       <div className="">
         <div className="d-flex position-relative mb-3 justify-content-center ">
-          <h5 className="m-auto text-center">Previous Projects</h5>
+          <h5 className="m-auto text-center">Previous Certificates</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
-            Add Projects
+            Add Certificates
           </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
-                {isEditMode ? "Edit Project Details" : "Add Project Details"}
+                {isEditMode
+                  ? "Edit Certification Details"
+                  : "Add Certification Details"}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -296,7 +293,6 @@ const AddCertification = ({ role }) => {
               <tr>
                 <th scope="col">Sr. No</th>
                 <th scope="col">Title</th>
-
                 <th scope="col">Certificate</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>

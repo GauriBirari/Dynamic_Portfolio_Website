@@ -6,16 +6,16 @@ import "./index.css";
 // import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 import "react-toastify/dist/ReactToastify.css";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
 const root = createRoot(document.querySelector("#root"));
 
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <Provider store={store}>
       <App />
     </Provider>
-  </HashRouter>
+  </BrowserRouter>
 );

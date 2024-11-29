@@ -213,7 +213,7 @@ const Portfolio = () => {
               <div className="portfolio__item-image">
                 <img src={image} alt={title} />
               </div>
-              <h3>{title}</h3>
+              <h4>{title}</h4>
               <p>
                 <BiCodeAlt className="mt-1" /> {languages}
               </p>

@@ -26,5 +26,5 @@ const projectSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Certification = mongoose.model("project", projectSchema);
-module.exports = Certification;
+const Project = mongoose.model("project", projectSchema);
+module.exports = Project;

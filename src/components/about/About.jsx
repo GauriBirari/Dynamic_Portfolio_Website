@@ -73,7 +73,6 @@ const About = () => {
           </div>
 
           <p>
-            {" "}
             {data.map((item) => {
               return (
                 <>

@@ -13,7 +13,7 @@
 
 .contact__option {
   background: var(--color-bg-variant);
-  padding: .7rem;
+  padding: 0.7rem;
   /* width: 19rem; */
   border-radius: 1.2rem;
   text-align: center;
@@ -46,7 +46,7 @@ form {
 input,
 textarea {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   background: transparent;
   border: 2px solid var(--color-primary-variant);

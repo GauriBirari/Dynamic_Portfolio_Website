@@ -38,10 +38,8 @@ router.put(
     const { title } = req.body;
 
     try {
-      const certificateToUpdate = await Certification.findByIdAndUpdate(
-        id,
-        req.body
-      );
+      const certificateToUpdate = await Certification.findById(
+        id);
       if (!certificateToUpdate) {
         return res.status(404).json({ message: "Certification not found" });
       }

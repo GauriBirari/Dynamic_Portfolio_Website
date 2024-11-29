@@ -70,7 +70,9 @@ router.post("/login", async (req, res) => {
       token: generateToken(newAdmin?._id),
     });
   } else {
-    throw new Error("Invalid Credentials");
+    res.status(404).json({
+      message: "Invalid Credentials"
+    });
   }
 });
 
@@ -78,11 +80,11 @@ router.get("/getalladmins", async (req, res) => {
   try {
     const getAllAdmin = await Admin.find();
     if (getAllAdmin.length === 0) {
-      throw new Error("Admins Not Found");
+      res.status(404).json("Admins Not Found");
     }
     res.status(201).send(getAllAdmin);
   } catch (error) {
-    throw new Error(error);
+    res.status(404).json(error);
   }
 });
 
