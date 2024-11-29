@@ -22,31 +22,35 @@ router.post("/addproject", saveProjectImage, async (req, res) => {
 });
 
 router.put("/updateproject/:id", saveProjectImage, async (req, res) => {
+  console.log("Request File:", req.file); // Logs file info
+  console.log("Request Body:", req.body); // Logs body data
+
   const { id } = req.params;
   const { filename } = req.file || {};
   const { title, languages, link } = req.body;
 
+  // if (!title || !filename || !languages || !link) {
+  //   return res.status(401).json({ status: 401, message: "Fill out all data" });
+  // }
+
   try {
-    const projectToUpdate = await Project.findByIdAndUpdate(id, req.body);
-    if (!projectToUpdate) {
-      return res.status(404).json({ message: "project not found" });
+    const projectData = await Project.findById(id);
+    if (!projectData) {
+      return res
+        .status(404)
+        .json({ status: 404, message: "Project not found" });
     }
 
-    projectToUpdate.title = title;
-    projectToUpdate.languages = languages;
-    projectToUpdate.link = link;
+    projectData.title = title;
+    projectData.languages = languages;
+    projectData.link = link;
+    projectData.image = filename;
 
-    // Only update the image if a new file is provided
-    if (filename) {
-      const url = req.protocol + "://" + req.get("host");
-      projectToUpdate.image = url + "/public/uploads/" + filename;
-    }
-
-    const updatedProject = await projectToUpdate.save();
-    res.status(200).json(updatedProject);
+    const updatedprojectData = await projectData.save();
+    res.status(200).json(updatedprojectData);
   } catch (error) {
-    console.error("Error updating project:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error in Project:", error);
+    res.status(500).json({ status: 500, message: "Internal Server Error" });
   }
 });
 

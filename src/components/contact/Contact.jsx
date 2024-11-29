@@ -65,7 +65,7 @@ const Contact = () => {
         <div className="contact__options">
           <article className="contact__option ">
             <FaLinkedinIn className="contact__option-icon" />
-            <h4 className="fw-bold">gauribirari</h4>
+            <h6 className="fw-bold">gauribirari</h6>
             <a
               href="https://www.linkedin.com/in/gauri-birari-179a79235"
               target="_blank"
@@ -76,7 +76,7 @@ const Contact = () => {
           </article>
           <article className="contact__option">
             <HiOutlineMail className="contact__option-icon" />
-            <h5>gauribirari2708@gmail.com</h5>
+            <h6>gauribirari2708@gmail.com</h6>
             <a
               href="mailto: gauribirari2708@gmail.com"
               target="_blank"
@@ -87,7 +87,7 @@ const Contact = () => {
           </article>
           <article className="contact__option">
             <RiWhatsappLine className="contact__option-icon" />
-            <h5>+919156327082</h5>
+            <h6>+919156327082</h6>
             <a href="https://api.whatsapp.com" target="_blank" rel="noreferrer">
               Send a message
             </a>

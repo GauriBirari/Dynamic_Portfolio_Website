@@ -78,6 +78,11 @@ const Sidebar = () => {
                 label: "Add Skills",
               },
               {
+                key: "addcertificates",
+                icon: <TfiLayoutSlider className="fs-4" />,
+                label: "Add Certification",
+              },
+              {
                 key: "contactentries",
                 icon: <AiFillContacts className="fs-4" />,
                 label: "Contact Entries",

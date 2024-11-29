@@ -17,6 +17,7 @@ const saveProjectImage = multer({
   storage: ProjectImageStorage,
   limits: { fileSize: maxImageSize },
   fileFilter: (req, file, cb) => {
+    console.log("File received:", file); // Log file details
     if (
       file.mimetype === "image/png" ||
       file.mimetype === "image/jpg" ||
@@ -24,8 +25,8 @@ const saveProjectImage = multer({
     ) {
       cb(null, true);
     } else {
+      console.log("File rejected:", file.mimetype);
       cb(null, false);
-      return null;
     }
   },
 }).single("image");

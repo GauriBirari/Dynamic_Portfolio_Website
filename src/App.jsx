@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import ContactEntries from "./Administration/ContactEntries";
 import AddAbout from "./Administration/AddAbout";
 import AddSkills from "./Administration/AddSkills";
+import AddCertification from "./Administration/AddCertification";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="contactentries" element={<ContactEntries />} />
           <Route path="addabout" element={<AddAbout />} />
           <Route path="addskills" element={<AddSkills />} />
+          <Route path="addcertificates" element={<AddCertification />} />
         </Route>
       </Routes>
     </>
