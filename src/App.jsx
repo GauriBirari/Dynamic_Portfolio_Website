@@ -11,6 +11,7 @@ import ContactEntries from "./Administration/ContactEntries";
 import AddAbout from "./Administration/AddAbout";
 import AddSkills from "./Administration/AddSkills";
 import AddCertification from "./Administration/AddCertification";
+import AddProfilePhoto from "./Administration/AddProfilePhoto";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="addabout" element={<AddAbout />} />
           <Route path="addskills" element={<AddSkills />} />
           <Route path="addcertificates" element={<AddCertification />} />
+          <Route path="addprofilephoto" element={<AddProfilePhoto />} />
         </Route>
       </Routes>
     </>

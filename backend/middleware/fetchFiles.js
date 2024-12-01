@@ -59,7 +59,36 @@ const saveCertificateImage = multer({
   },
 }).single("image");
 
+//Project Image Storing Config
+const profilephotomageStorage = multer.diskStorage({
+  filename: (req, file, cb) => {
+    const fileName = "-" + file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, "profilephoto-" + v4() + fileName);
+  },
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads/");
+  },
+});
+
+const saveprofilephotomage = multer({
+  storage: profilephotomageStorage,
+  limits: { fileSize: maxImageSize },
+  fileFilter: (req, file, cb) => {
+    if (
+      file.mimetype === "image/png" ||
+      file.mimetype === "image/jpg" ||
+      file.mimetype === "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return null;
+    }
+  },
+}).single("image");
+
 module.exports = {
   saveProjectImage,
   saveCertificateImage,
+  saveprofilephotomage
 };

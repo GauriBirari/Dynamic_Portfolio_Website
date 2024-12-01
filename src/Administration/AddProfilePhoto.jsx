@@ -25,13 +25,12 @@ import { useSelectAccess } from "../store/stateFunctions";
 
 const initialValues = {
   title: "",
-
   image: null,
 };
 
 const swalalert = withReactContent(Swal);
 
-const AddCertification = ({ role }) => {
+const AddProfilePhoto = ({ role }) => {
   const user = useSelectAccess("Super Admin");
 
   const [show, setShow] = useState(false);
@@ -68,7 +67,7 @@ const AddCertification = ({ role }) => {
   // Get
   const getData = () => {
     server
-      .get("/certification/getcertificates", {
+      .get("/profilephoto/getprofilephoto", {
         headers: {
           "Content-Type": "application/json",
           Authorization: user.authToken,
@@ -108,7 +107,7 @@ const AddCertification = ({ role }) => {
       .then(function (swalObject) {
         if (swalObject.isConfirmed) {
           server
-            .delete(`/certification/deletecertificates/${data._id}`, {
+            .delete(`/profilephoto/deleteprofilephoto/${data._id}`, {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: user.authToken,
@@ -145,7 +144,7 @@ const AddCertification = ({ role }) => {
     }
 
     server
-      .put(`/certification/updatecertification/${values._id}`, formData, {
+      .put(`/profilephoto/updateprofilephoto/${values._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: user.authToken,
@@ -185,7 +184,7 @@ const AddCertification = ({ role }) => {
         formData.append("image", values.image);
 
         server
-          .post("/certification/addcertificate", formData, {
+          .post("/profilephoto/addprofilephoto", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: user.authToken,
@@ -215,17 +214,17 @@ const AddCertification = ({ role }) => {
       {console.log(formik.values.errors)}
       <div className="">
         <div className="d-flex position-relative mb-3 justify-content-center ">
-          <h5 className="m-auto text-center">Previous Certificates</h5>
+          <h5 className="m-auto text-center">Previous Profilephoto</h5>
           <Button variant="contained" color="info" onClick={handleShow}>
-            Add Certificates
+            Add Profilephoto
           </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
                 {isEditMode
-                  ? "Edit Certification Details"
-                  : "Add Certification Details"}
+                  ? "Edit Profilephoto Details"
+                  : "Add Profilephoto Details"}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -293,7 +292,7 @@ const AddCertification = ({ role }) => {
               <tr>
                 <th scope="col">Sr. No</th>
                 <th scope="col">Title</th>
-                <th scope="col">Certificate</th>
+                <th scope="col">Image</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -337,4 +336,4 @@ const AddCertification = ({ role }) => {
   );
 };
 
-export default AddCertification;
+export default AddProfilePhoto;

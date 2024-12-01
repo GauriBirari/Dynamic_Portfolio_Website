@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { TfiLayoutSlider } from "react-icons/tfi";
-import { RiDashboardFill } from "react-icons/ri";
-import { FaMedal, FaProductHunt, FaUser } from "react-icons/fa";
-import { CiLaptop, CiUser } from "react-icons/ci";
-import { AiFillContacts, AiFillHome, AiOutlineUser } from "react-icons/ai";
-import { MdOutlineDynamicFeed, MdAddAPhoto } from "react-icons/md";
-import { GiFarmer, GiPalmTree, GiPineTree } from "react-icons/gi";
+import { FaCode, FaProductHunt } from "react-icons/fa";
+import { BiDetail } from "react-icons/bi";
+import { AiFillContacts } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 import { Layout, Menu, theme } from "antd";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { logoutAccess, useSelectAccess } from "../store/stateFunctions";
@@ -63,18 +61,24 @@ const Sidebar = () => {
             }}
             items={[
               {
+                key: "addprofilephoto",
+                icon: <CgProfile className="fs-4" />,
+                label: "Add Profile Photo",
+              },
+              {
+                key: "addabout",
+                icon: <BiDetail className="fs-4" />,
+                label: "Add About Details",
+              },
+              {
                 key: "addprojects",
                 icon: <FaProductHunt className="fs-4" />,
                 label: "Add Projects",
               },
-              {
-                key: "addabout",
-                icon: <TfiLayoutSlider className="fs-4" />,
-                label: "Add About Details",
-              },
+
               {
                 key: "addskills",
-                icon: <TfiLayoutSlider className="fs-4" />,
+                icon: <FaCode className="fs-4" />,
                 label: "Add Skills",
               },
               {
